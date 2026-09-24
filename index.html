@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Free ThemeZap Templates</title>
+  <meta name="description" content="Premium Framer templates for startups, studios and portfolios — all free on ThemeZap." />
+  <meta name="theme-color" content="#060608" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="ThemeZap — Premium Framer templates, all free" />
+  <meta property="og:description" content="Premium Framer templates for startups, studios and portfolios — all free." />
+  <meta property="og:image" content="https://framertemplate.store/covers/agent-ai.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060608;
+      --fg: #f5f5f7;
+      --muted: #a4a4b2;
+      --brand: #8b72ff;
+      --accent: #3be0f0;
+      --pink: #b84dff;
+      --card-w: clamp(220px, 24vw, 380px);
+      --gap: clamp(12px, 1.4vw, 22px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      overflow: hidden;           /* one screen, no scroll */
+      overscroll-behavior: none;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { height: 100vh; height: 100dvh; position: relative; }
+
+    /* ---------- moving template wall ---------- */
+    .wall {
+      position: absolute; inset: 0; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .rows {
+      display: flex; flex-direction: column; gap: var(--gap);
+      transform: rotate(-9deg) scale(1.25);
+    }
+    .row { display: flex; width: max-content; }
+    .track {
+      display: flex; gap: var(--gap); padding-right: var(--gap);
+      animation: slide var(--dur, 60s) linear infinite;
+    }
+    .row.rev .track { animation-direction: reverse; }
+    .track img {
+      width: var(--card-w); aspect-ratio: 4 / 3; object-fit: cover; object-position: top;
+      border-radius: 14px; display: block;
+      border: 1px solid rgb(255 255 255 / .08);
+      box-shadow: 0 20px 50px -20px rgb(0 0 0 / .8);
+      background: #121219;
+      opacity: 0; transition: opacity .6s ease;
+    }
+    .track img.in { opacity: 1; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    /* darken the wall so the card reads */
+    .shade {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 55% at 50% 50%, rgb(6 6 8 / .92) 0%, rgb(6 6 8 / .55) 60%, rgb(6 6 8 / .25) 100%),
+        linear-gradient(to bottom, rgb(6 6 8 / .7), transparent 22%, transparent 78%, rgb(6 6 8 / .8));
+    }
+
+    /* ---------- center card ---------- */
+    main {
+      position: relative; z-index: 2; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .card {
+      width: min(560px, 100%);
+      text-align: center;
+      padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 44px);
+      border-radius: 28px;
+      background: rgb(14 14 20 / .62);
+      border: 1px solid rgb(255 255 255 / .1);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      box-shadow: 0 40px 120px -30px rgb(109 77 255 / .45), inset 0 1px 0 rgb(255 255 255 / .06);
+    }
+    .brand { display: flex; justify-content: center; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; letter-spacing: -.01em; }
+    .brand svg { width: 30px; height: 30px; }
+    .pill {
+      display: inline-block; margin-top: 22px; padding: 6px 12px; border-radius: 999px;
+      font-size: 12.5px; color: #d9d2ff; background: rgb(139 114 255 / .16); border: 1px solid rgb(139 114 255 / .3);
+    }
+    h1 {
+      margin-top: 16px;
+      font-size: clamp(30px, 5.4vw, 50px); line-height: 1.05; letter-spacing: -.035em; font-weight: 700;
+      text-wrap: balance;
+    }
+    h1 span {
+      background: linear-gradient(100deg, var(--brand), var(--pink) 50%, var(--accent));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    p.sub { margin: 14px auto 0; max-width: 420px; color: var(--muted); font-size: clamp(14.5px, 1.6vw, 16.5px); line-height: 1.55; text-wrap: pretty; }
+
+    .cta {
+      margin-top: 28px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      height: 56px; padding: 0 30px; border-radius: 999px;
+      font: 600 16.5px/1 inherit; color: #fff; text-decoration: none;
+      background: linear-gradient(100deg, #6d4dff, #b84dff 55%, #3bb8f0);
+      box-shadow: 0 12px 40px -10px rgb(139 77 255 / .75), inset 0 1px 0 rgb(255 255 255 / .25);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 18px 50px -10px rgb(139 77 255 / .9), inset 0 1px 0 rgb(255 255 255 / .25); }
+    .cta:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .cta svg { width: 18px; height: 18px; transition: transform .2s ease; }
+    .cta:hover svg { transform: translateX(3px); }
+    .trust { margin-top: 16px; font-size: 13px; color: #7d7d8c; }
+
+    @media (max-width: 640px) {
+      :root { --card-w: 190px; }
+      .rows { transform: rotate(-9deg) scale(1.45); }
+      .cta { width: 100%; }
+      .shade { background: linear-gradient(to bottom, rgb(6 6 8 / .55), rgb(6 6 8 / .35) 30%, rgb(6 6 8 / .35) 70%, rgb(6 6 8 / .65)); }
+    }
+    @media (max-height: 560px) {
+      .pill, .trust { display: none; }
+      h1 { margin-top: 12px; }
+      .cta { margin-top: 18px; height: 50px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .track { animation-duration: 400s; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wall" aria-hidden="true"><div class="rows" id="rows"></div></div>
+  <div class="shade" aria-hidden="true"></div>
+
+  <main>
+    <div class="card">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#6D4DFF"/><stop offset="55%" stop-color="#B84DFF"/><stop offset="100%" stop-color="#3BE0F0"/>
+          </linearGradient></defs>
+          <rect width="32" height="32" rx="9" fill="url(#g)"/>
+          <path d="M18.1 4 7 19.1h6.6L12.6 28 25 13.3h-7.2L18.1 4Z" fill="#fff"/>
+        </svg>
+        ThemeZap
+      </div>
+      <div class="pill">30+ Framer templates · 100% free</div>
+      <h1>Premium templates, <span>all free</span></h1>
+      <p class="sub">Every ThemeZap template for startups, studios and portfolios is free. Pick one, add your content and go live in minutes.</p>
+      <a class="cta" id="cta" href="https://themezap.com/templates?utm_source=bridge&utm_medium=referral&utm_campaign=bridge_page">
+        Get Your Free Template
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <div class="trust">No credit card · Fully editable · Built for Framer</div>
+    </div>
+  </main>
+
+  <script>
+    // Every ThemeZap template cover. Add a file to covers/ and its name here.
+    const covers = [
+      "agent-ai","artspace","makos","bureau-nine","videofolio","sentira","kirk","lyniq",
+      "form-flex","lena","galerie-holm","mara-lindqvist","obsidian","foldex","portavia","meeko",
+      "calder","vexoo","yaeger","michel","tabfolio","nuance","tom-henry","adrian-cole",
+      "optic-studio","diego-valdez","photographer","trev-studio","focal","hanssen","ezio","evermore"
+    ];
+    const ROWS = 4;
+    const speeds = [70, 85, 65, 90];
+    const rowsEl = document.getElementById("rows");
+
+    for (let r = 0; r < ROWS; r++) {
+      // each row gets its own slice of covers, rotated so rows don't line up
+      const list = covers.filter((_, i) => i % ROWS === r);
+      const set = list.concat(covers.slice(r * 3, r * 3 + 3)); // pad to fill wide screens
+      const row = document.createElement("div");
+      row.className = "row" + (r % 2 ? " rev" : "");
+      const track = document.createElement("div");
+      track.className = "track";
+      track.style.setProperty("--dur", speeds[r] + "s");
+      // two identical halves → translateX(-50%) loops seamlessly
+      for (const pass of [0, 1]) {
+        for (const slug of set) {
+          const img = new Image();
+          img.src = "covers/" + slug + ".webp";
+          img.alt = "";
+          img.onload = () => img.classList.add("in");
+          img.decoding = "async";
+          track.appendChild(img);
+        }
+      }
+      row.appendChild(track);
+      rowsEl.appendChild(row);
+    }
+  </script>
+</body>
+</html>
