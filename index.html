@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Free ThemeZap Templates</title>
-  <meta name="description" content="Premium Framer templates for startups, studios and portfolios — all free on ThemeZap." />
+  <title>ThemeZap All-Access</title>
+  <meta name="description" content="Every ThemeZap Framer template for startups, studios and portfolios, plus every one added later, for one payment." />
   <meta name="theme-color" content="#060608" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <meta property="og:title" content="ThemeZap — Premium Framer templates, all free" />
-  <meta property="og:description" content="Premium Framer templates for startups, studios and portfolios — all free." />
+  <meta property="og:title" content="ThemeZap — Every Framer template, one payment" />
+  <meta property="og:description" content="The whole ThemeZap template library and every future release, for one payment." />
   <meta property="og:image" content="https://framertemplate.store/covers/agent-ai.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -152,38 +152,32 @@
         </svg>
         ThemeZap
       </div>
-      <div class="pill">30+ Framer templates · 100% free</div>
-      <h1>Premium templates, <span>all free</span></h1>
-      <p class="sub">Every ThemeZap template for startups, studios and portfolios is free. Pick one, add your content and go live in minutes.</p>
-      <a class="cta" id="cta" href="https://themezap.com/templates?utm_source=bridge&utm_medium=referral&utm_campaign=bridge_page">
-        Get Your Free Template
+      <div class="pill"><!--tz:count-->51<!--/tz--> Framer templates · one payment</div>
+      <h1>Every template. <span>One price.</span></h1>
+      <p class="sub">Get all <!--tz:count-->51<!--/tz--> ThemeZap templates for startups, studios and portfolios, plus every one added later, for a single <!--tz:price-->$49<!--/tz--> payment.</p>
+      <a class="cta" id="cta" href="https://themezap.com/all-access?utm_source=bridge&utm_medium=referral&utm_campaign=bridge_page">
+        Get All-Access — <!--tz:price-->$49<!--/tz-->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <div class="trust">No credit card · Fully editable · Built for Framer</div>
+      <div class="trust">Pay once · Lifetime updates · Commercial licence</div>
     </div>
   </main>
 
+  <script src="covers.js"></script>
   <script>
-    // Every ThemeZap template cover. Add a file to covers/ and its name here.
-    const covers = [
-      "agent-ai","artspace","makos","bureau-nine","videofolio","sentira","kirk","lyniq",
-      "form-flex","lena","galerie-holm","mara-lindqvist","obsidian","foldex","portavia","meeko",
-      "calder","vexoo","yaeger","michel","tabfolio","nuance","tom-henry","adrian-cole",
-      "optic-studio","diego-valdez","photographer","trev-studio","focal","hanssen","ezio","evermore"
-    ];
+    const covers = window.TZ_COVERS || [];
     const ROWS = 4;
-    const speeds = [70, 85, 65, 90];
+    const pace = [1.0, 1.2, 0.95, 1.3]; // per-row multiplier so rows drift at different speeds
     const rowsEl = document.getElementById("rows");
 
     for (let r = 0; r < ROWS; r++) {
       // each row gets its own slice of covers, rotated so rows don't line up
-      const list = covers.filter((_, i) => i % ROWS === r);
-      const set = list.concat(covers.slice(r * 3, r * 3 + 3)); // pad to fill wide screens
+      const set = covers.filter((_, i) => i % ROWS === r);
       const row = document.createElement("div");
       row.className = "row" + (r % 2 ? " rev" : "");
       const track = document.createElement("div");
       track.className = "track";
-      track.style.setProperty("--dur", speeds[r] + "s");
+      track.style.setProperty("--dur", Math.round(set.length * 5.5 * pace[r]) + "s");
       // two identical halves → translateX(-50%) loops seamlessly
       for (const pass of [0, 1]) {
         for (const slug of set) {
